@@ -4,7 +4,11 @@ export interface FetchGamesResponse {
     previous: string
     results: Game[]
   }
-  
+  export interface Platform {
+    id: number
+    slug: string
+    name: string
+  }
   export interface Game {
     id: number
     slug: string
@@ -21,30 +25,7 @@ export interface FetchGamesResponse {
     playtime: number
     suggestions_count: number
     updated: string
-    esrb_rating: EsrbRating
     platforms: Platform[]
-  }
-  
-  export interface EsrbRating {
-    id: number
-    slug: string
-    name: string
-  }
-  
-  export interface Platform {
-    platform: Platform2
-    released_at: string
-    requirements: Requirements
-  }
-  
-  export interface Platform2 {
-    id: number
-    slug: string
-    name: string
-  }
-  
-  export interface Requirements {
-    minimum: string
-    recommended: string
+    parent_platforms: {platform: Platform}[]
   }
   
