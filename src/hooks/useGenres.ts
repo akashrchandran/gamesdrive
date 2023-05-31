@@ -1,33 +1,36 @@
+import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-helper";
-import { FetchGamesResponse, Game } from "../models/gameAPIResponse";
-import { CanceledError } from "axios";
+import { FetchGenresResponse, Genre } from "../models/genreAPIResponse";
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+
+const useGenres = () => {
+  const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
+
     setLoading(true);
     apiClient
-      .get<FetchGamesResponse>("/games", { signal: controller.signal })
+      .get<FetchGenresResponse>("/genres", { signal: controller.signal })
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) {
           return;
         }
-        setError(err);
+        setError(err.message)
+        setLoading(false);
       });
 
     return () => controller.abort();
   }, []);
 
-  return { games, error, isLoading };
+  return { genres, error, isLoading };
 };
 
-export default useGames;
+export default useGenres;
