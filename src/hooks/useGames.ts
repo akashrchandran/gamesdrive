@@ -1,25 +1,25 @@
-import { Game, Platform } from "../models/gameAPIResponse";
-import { Genre } from "../models/genreAPIResponse";
+import { GameQuery } from "../App";
+import { Game } from "../models/gameAPIResponse";
 import useData from "./useData";
 
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  gameQuery: GameQuery
 ) => { 
   let platforms = null;
-  if (selectedPlatform?.id === 2)
+  if (gameQuery.platform?.id === 2)
     platforms = "187, 18, 16, 15, 27, 19, 17";
   else
-    platforms = selectedPlatform?.id;
+    platforms = gameQuery.platform?.id;
   return useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: platforms
+        genres: gameQuery.genre?.id,
+        platforms: platforms,
+        ordering: gameQuery.sortOrder
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   );
 };
 export default useGames;
