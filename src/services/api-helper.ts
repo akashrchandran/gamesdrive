@@ -4,6 +4,7 @@ const apiKey = "dc813b8f9f8a409e9deff9b962576948";
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
