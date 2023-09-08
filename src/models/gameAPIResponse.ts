@@ -12,6 +12,7 @@ export interface Platform {
 export interface Game {
   id: number;
   slug: string;
+  description_raw: string;
   name: string;
   released: string;
   tba: boolean;
