@@ -1,11 +1,4 @@
-export interface FetchGenresResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Genre[];
-}
-
-export interface Genre {
+export default interface Genre {
   id: number;
   name: string;
   slug: string;

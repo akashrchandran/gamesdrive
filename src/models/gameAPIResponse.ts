@@ -1,16 +1,11 @@
-export interface FetchGamesResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Game[];
-}
-export interface Platform {
+import Genre from "./genreAPIResponse";
+import Publisher from "./publisherAPIResponse";
+import Platform from "./paltformAPIResponse";
+
+export default interface Game {
   id: number;
-  slug: string;
-  name: string;
-}
-export interface Game {
-  id: number;
+  genres: Genre[];
+  publishers: Publisher[];
   slug: string;
   description_raw: string;
   name: string;

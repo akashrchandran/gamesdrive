@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-helper";
-import { Game } from "../models/gameAPIResponse";
+import Game from "../models/gameAPIResponse";
 
 const apiClient = new APIClient<Game>('/games');
 
