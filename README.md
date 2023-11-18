@@ -17,7 +17,7 @@ git clone <repository-url>
 2. Navigate to the cloned repository directory:
 
 ```bash
-cd GamesDrive
+cd gamesdrive
 ```
 
 3. Install the required dependencies:
